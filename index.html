@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="style/style.css">
+    
+    <title>CadTris</title>
+<body>
+
+    <header>
+        <h1>CadTris #</h1>
+    </header>
+
+    <nav>
+        <button id="inpartita" onclick="inizziaPartita()">inizzia partita</button>
+    </nav>
+
+
+    
+    <!--    
+    (prima righe poi colonne)
+    -->
+
+    <main id="main" class="verticale">
+        <div class="orizzontale">
+            <div  style="height: 200px;width:200px; border-bottom:solid 4px black;border-right:solid 4px black;"id="1"><button id="t1" onclick="occupa(1)">Occupa</button></div>
+            <div  style="height: 200px;width:200px;border-bottom:solid 4px black;border-right:solid 4px black;border-left:solid 4px black;"id="2"><button id="t2" onclick="occupa(2)">Occupa</button></div>
+            <div  style="height: 200px;width:200px;border-bottom:solid 4px black;border-left:solid 4px black;"id="3"><button id="t3" onclick="occupa(3)">Occupa</button></div>
+        </div>
+        <div class="orizzontale">
+            <div id="4" style="height: 200px;width:200px; border-bottom:solid 4px black;border-right:solid 4px black;border-top:solid 4px black;"><button id="t4" onclick="occupa(4)">Occupa</button></div>
+            <div id="5" style="height: 200px;width:200px;border-bottom:solid 4px black;border-right:solid 4px black;border-left:solid 4px black;border-top:solid 4px black;"><button id="t5" onclick="occupa(5)">Occupa</button></div>
+            <div id="6" style="height: 200px;width:200px;border-bottom:solid 4px black;border-left:solid 4px black;border-top:solid 4px black;"><button id="t6" onclick="occupa(6)">Occupa</button></div>
+        </div>
+        <div class="orizzontale">
+            <div id="7" style="height: 200px;width:200px; border-top:solid 4px black;border-right:solid 4px black;"><button id="t7"  onclick="occupa(7)">Occupa</button></div>
+            <div id="8" style="height: 200px;width:200px;border-top:solid 4px black;border-right:solid 4px black;border-left:solid 4px black;"><button id="t8" onclick="occupa(8)">Occupa</button></div>
+            <div id="9" style="height: 200px;width:200px;border-top:solid 4px black;border-left:solid 4px black;"><button id="t9" onclick="occupa(9)">Occupa</button></div>
+        </div>
+    </main>
+    
+    
+    <script>
+
+        let conta = 0;
+
+        let matrice = [];
+
+        function inizziaPartita(){
+            document.getElementById("main").innerHTML = '<div class="orizzontale"><div  style="height: 200px;width:200px; border-bottom:solid 4px black;border-right:solid 4px black;"id="1"><button id="t1" onclick="occupa(1)">Occupa</button></div><div  style="height: 200px;width:200px;border-bottom:solid 4px black;border-right:solid 4px black;border-left:solid 4px black;"id="2"><button id="t2" onclick="occupa(2)">Occupa</button></div><div  style="height: 200px;width:200px;border-bottom:solid 4px black;border-left:solid 4px black;"id="3"><button id="t3" onclick="occupa(3)">Occupa</button></div></div><div class="orizzontale"><div id="4" style="height: 200px;width:200px; border-bottom:solid 4px black;border-right:solid 4px black;border-top:solid 4px black;"><button id="t4" onclick="occupa(4)">Occupa</button></div><div id="5" style="height: 200px;width:200px;border-bottom:solid 4px black;border-right:solid 4px black;border-left:solid 4px black;border-top:solid 4px black;"><button id="t5" onclick="occupa(5)">Occupa</button></div><div id="6" style="height: 200px;width:200px;border-bottom:solid 4px black;border-left:solid 4px black;border-top:solid 4px black;"><button id="t6" onclick="occupa(6)">Occupa</button></div></div><div class="orizzontale"><div id="7" style="height: 200px;width:200px; border-top:solid 4px black;border-right:solid 4px black;"><button id="t7"  onclick="occupa(7)">Occupa</button></div><div id="8" style="height: 200px;width:200px;border-top:solid 4px black;border-right:solid 4px black;border-left:solid 4px black;"><button id="t8" onclick="occupa(8)">Occupa</button></div><div id="9" style="height: 200px;width:200px;border-top:solid 4px black;border-left:solid 4px black;"><button id="t9" onclick="occupa(9)">Occupa</button></div></div>';
+            
+            conta=0;
+
+            for(i=0;i<9;i++){
+                matrice[i]='';
+            }
+        }
+
+        function occupa(cella){
+            console.log("occupa");
+
+            if(conta%2==0){
+                document.getElementById(cella).innerHTML='<p style="font-size: 180px; text-align: center;margin:0px;padding:0px;">x</p>';
+                matrice[cella-1] = 'x';
+            }
+            else{
+                document.getElementById(cella).innerHTML='<p style="font-size: 180px; text-align: center;margin:0px;padding:0px;">A</p>';
+                matrice[cella-1] = 'A';
+            }
+
+            conta++;
+            console.log(matrice[cella-1]);
+
+            /*matrince =
+              [0] [1] [2] 
+
+              [3] [4] [5] 
+
+              [6] [7] [8] 
+                   */
+
+            if(conta>4){
+                winCon();
+            }
+        }
+
+        function winCon(){
+
+            if((matrice[0]=='x' && matrice[1]=='x' && matrice[2]=='x') || (matrice[3]=='x' && matrice[4]=='x' && matrice[5]=='x') || (matrice[6]=='x' && matrice[7]=='x' && matrice[8]=='x') ||(matrice[0]=='x' && matrice[3]=='x' && matrice[6]=='x') ||(matrice[1]=='x' && matrice[4]=='x' && matrice[7]=='x') || (matrice[2]=='x' && matrice[5]=='x' && matrice[8]=='x') ||(matrice[0]=='x' && matrice[4]=='x' && matrice[8]=='x') ||(matrice[2]=='x' && matrice[4]=='x' && matrice[6]=='x')){
+                window.alert("plier X win");
+
+                document.getElementById("main").innerHTML = '';
+            }
+
+            else if((matrice[0]=='A' && matrice[1]=='A' && matrice[2]=='A') || (matrice[3]=='A' && matrice[4]=='A' && matrice[5]=='A') || (matrice[6]=='A' && matrice[7]=='A' && matrice[8]=='A') ||(matrice[0]=='A' && matrice[3]=='A' && matrice[6]=='A') ||(matrice[1]=='A' && matrice[4]=='A' && matrice[7]=='A') || (matrice[2]=='A' && matrice[5]=='A' && matrice[8]=='A') ||(matrice[0]=='A' && matrice[4]=='A' && matrice[8]=='A') ||(matrice[2]=='A' && matrice[4]=='A' && matrice[6]=='A')){
+                window.alert("plier A win");
+
+                document.getElementById("t1").remove();
+                document.getElementById("t2").remove();
+                document.getElementById("t3").remove();
+                document.getElementById("t4").remove();
+                document.getElementById("t5").remove();
+                document.getElementById("t6").remove();
+                document.getElementById("t7").remove();
+                document.getElementById("t8").remove();
+                document.getElementById("t9").remove();
+            }
+
+            else{
+
+                if(conta==9){
+                    window.alert("Pareggio, Vince CADMan");
+                }
+                console.log("non vinto");
+            }
+        }
+    </script>
+</body>
+</html>

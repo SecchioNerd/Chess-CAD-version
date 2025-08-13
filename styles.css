@@ -1,0 +1,148 @@
+
+:root {
+    --bg-color: white;
+    --text-color: black;
+    --red-color: #ff3939;
+    --dark-red-color: #c20000;
+}
+
+.dark {
+    --bg-color: #121212;
+    --text-color: white;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: var(--bg-color);
+    color: var(--text-color);
+    zoom: 110%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0px;
+    transition: 0.3s;
+}
+
+#themeToggleButton {
+    background: var(--red-color);
+    color: white;
+    border: 0;
+    padding: 10px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#themeToggleButton:hover {
+    background: var(--dark-red-color);
+}
+
+@media (max-width: 620px) {
+    body {
+        margin: 15px;
+        zoom: 100%;
+    }
+}
+
+/* h1 {
+    border-bottom: 4px solid var(--red-color);
+} */
+
+hr {
+    border: 0;
+    border-top: 2px solid var(--red-color);
+    margin-top: 25px;
+}
+
+.autocad {
+    text-align: center;
+    color: var(--red-color);
+    font-size: 100px;
+    font-weight: bold;
+}
+
+#servoDellaGlebaButton {
+    cursor: pointer;
+    width: 100%;
+    max-width: 600px;
+    font-size: 25px;
+    background: var(--red-color);
+    border: 0;
+    color: white;
+    border-radius: 10px;
+    padding: 10px;
+    transition: 0.3s;
+}
+
+#servoDellaGlebaButton:hover {
+    background: var(--dark-red-color);
+}
+
+a {
+    color: var(--red-color);
+}
+
+
+/*cambiato da SecchioNerd...*/
+
+header{
+    display:flex;
+    padding: 10px;
+    color:white;
+    background-color: red;
+    gap:29%;
+    text-align: center;
+    padding: 10px;
+    color:white;
+    background-color: red;
+
+    display: flex;
+    gap:32%;
+}
+
+nav{
+    position:absolute;
+    padding:0px;
+    background-color: rgb(199, 199, 199);
+    
+    width: 200px;
+}
+
+.indice{
+    padding:10px;
+    border-left: solid 4px red;
+    border-right: solid 4px red;
+    border-bottom: solid 4px red;
+}
+main{
+    margin-left:150px;
+    margin-right:150px;
+    margin-bottom:40px;
+    margin-top:40px;
+}
+
+footer{
+    background-color: black;
+    color:white;
+    margin: 0px;
+    padding-bottom: 10px;
+    text-align: center;
+}
+
+.salita{
+    position: fixed;
+    
+    bottom:20px;
+    left:10px;
+}
+
+.verticale{
+    display: flex;
+    gap:0%;
+    flex-direction: column;
+}
+.orizzontale{
+    display: flex;
+    gap:0%;
+}
